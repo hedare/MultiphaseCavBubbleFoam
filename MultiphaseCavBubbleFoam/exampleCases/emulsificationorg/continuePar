@@ -1,0 +1,14 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
+
+rm log.MultiphaseCavBubbleFoam
+rm info.csv
+rm log.decomposePar
+runApplication decomposePar
+runParallel $(getApplication)
+rm log.reconstructPar
+runApplication reconstructPar -newTimes
+
+#------------------------------------------------------------------------------

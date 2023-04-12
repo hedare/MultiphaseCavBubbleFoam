@@ -1,0 +1,10 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
+
+mv log.MultiphaseCavBubbleFoam log1.MultiphaseCavBubbleFoam
+mv info.csv info1.csv
+runApplication $(getApplication)
+
+#------------------------------------------------------------------------------
