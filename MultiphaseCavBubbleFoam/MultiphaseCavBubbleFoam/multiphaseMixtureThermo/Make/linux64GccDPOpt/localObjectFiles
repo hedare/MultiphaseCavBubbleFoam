@@ -1,0 +1,4 @@
+LOCAL_OBJECTS = \
+phaseModel.o\
+alphaContactAngleFvPatchScalarField.o\
+multiphaseMixtureThermo.o

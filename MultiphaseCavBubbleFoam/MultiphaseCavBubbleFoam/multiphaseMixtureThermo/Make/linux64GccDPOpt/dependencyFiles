@@ -1,0 +1,4 @@
+DEPENDENCIES = \
+phaseModel/phaseModel.dep\
+alphaContactAngle/alphaContactAngleFvPatchScalarField.dep\
+multiphaseMixtureThermo.dep

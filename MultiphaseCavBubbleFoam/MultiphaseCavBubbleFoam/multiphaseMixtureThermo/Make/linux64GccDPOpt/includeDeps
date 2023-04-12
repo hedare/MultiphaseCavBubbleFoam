@@ -1,0 +1,3 @@
+include phaseModel/phaseModel.dep
+include alphaContactAngle/alphaContactAngleFvPatchScalarField.dep
+include multiphaseMixtureThermo.dep
