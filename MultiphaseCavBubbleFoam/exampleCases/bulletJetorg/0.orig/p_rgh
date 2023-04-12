@@ -1,0 +1,80 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      p_rgh;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [1 -1 -2 0 0 0 0];
+
+internalField   uniform 1e5;
+
+boundaryField
+{
+    left
+    {
+        type            symmetryPlane;
+    }
+
+    wall
+    {
+/*        type            totalPressure;
+        p0              uniform 101325;*/
+        type            waveTransmissive;
+        field           p_rgh;
+        phi             phi;
+        rho             rho;
+//         psi           psim;
+//        psi             DrhoDp;
+        fieldInf        101325;
+        gamma           7.15; //1.006580313; //1.4;
+        lInf            1e-3;//0.0034;//1e-3;
+        value           uniform 101325;
+        //inletOutlet     true;
+        correctSupercritical false;
+    }
+
+    front
+    {
+        type            wedge;
+    }
+
+    back
+    {
+        type            wedge;
+    }
+
+    outside
+    {
+/*        type            totalPressure;
+        p0              uniform 101325;*/
+        type            waveTransmissive;
+        field           p_rgh;
+        phi             phi;
+        rho             rho;
+//         psi           psim;
+//        psi             DrhoDp;
+        fieldInf        101325;
+        gamma           7.15; //1.006580313; //1.4;
+        lInf            1e-3;//0.0034;//1e-3;
+        value           uniform 101325;
+        //inletOutlet     true;
+        correctSupercritical false;
+    }
+
+    defaultFaces
+    {
+        type            empty;
+    }
+}
+
+// ************************************************************************* //

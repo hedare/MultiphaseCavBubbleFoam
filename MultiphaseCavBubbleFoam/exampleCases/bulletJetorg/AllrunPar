@@ -1,0 +1,26 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
+
+./Allclean
+
+touch fluid.foam
+
+restore0Dir
+cp constant/kinematicCloudPositions 0/lagrangian/kinematicCloud/positions
+
+#runApplication blockMesh
+runApplication ./makeMesh
+
+sed -i ':a;N;$!ba;s/front\n    {\n        type            patch/front\n    {\n        type            wedge/' constant/polyMesh/boundary
+sed -i ':a;N;$!ba;s/back\n    {\n        type            patch/back\n    {\n        type            wedge/' constant/polyMesh/boundary
+sed -i ':a;N;$!ba;s/left\n    {\n        type            patch/left\n    {\n        type            symmetryPlane/' constant/polyMesh/boundary
+sed -i 's/value           uniform 1/value           uniform 0/' 0/alpha.water
+runApplication ./../initbulletJet/initbubble
+sed -i 's/value           uniform 0/value           uniform 1/' 0/alpha.water
+#runApplication setFields
+runApplication decomposePar
+runParallel $(getApplication)
+
+#------------------------------------------------------------------------------

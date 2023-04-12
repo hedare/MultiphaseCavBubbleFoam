@@ -1,0 +1,58 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  dev                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    {
+        name    refineCells;
+        type    cellSet;
+        action  new;
+//    // Select based on cellShape
+//    source shapeToCell;
+//    sourceInfo
+//    {
+//        type hex;           // hex/wedge/prism/pyr/tet/tetWedge/splitHex
+//    }
+/*
+        source  boxToCell;
+        sourceInfo
+        {
+            box (0.0 0.0 -0.001)(0.04 0.04 0.001);
+        }
+*/
+/*
+        source sphereToCell;
+        sourceInfo
+	    {
+		centre   (0 0 0);
+		radius   0.014;
+	    }
+
+        }
+*/
+    	source cylinderToCell;
+    	sourceInfo
+    	    {
+    		p1       (0 0 0); // start point on cylinder axis
+       		p2       (0 8e-3 0);   // end point on cylinder axis
+       		radius   4e-3;
+    	    }
+        }
+
+);
+
+// ************************************************************************* //
