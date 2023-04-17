@@ -19,7 +19,7 @@ sheetThickness  sheetThickness [0 1 0 0 0 0 0] 0e-6; //50e-6
 
 BubbleRadius    BubbleRadius [0 1 0 0 0 0 0] 22e-6;
 epsionBubble    epsionBubble [0 0 0 0 0 0 0] 1e-12;//to narrow the bubble interface
-BubbleCenter    BubbleCenter [0 1 0 0 0 0 0] (0 -100e-6 0);
+BubbleCenter    BubbleCenter [0 1 0 0 0 0 0] (0 -500e-6 0);
 
 pBubble         pBubble [ 1 -1 -2 0 0 0 0 ] 200e5;
 pliquid         pliquid [ 1 -1 -2 0 0 0 0 ] 101325;
