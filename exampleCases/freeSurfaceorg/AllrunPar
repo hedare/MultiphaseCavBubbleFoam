@@ -17,7 +17,7 @@ sed -i ':a;N;$!ba;s/front\n    {\n        type            patch/front\n    {\n  
 sed -i ':a;N;$!ba;s/back\n    {\n        type            patch/back\n    {\n        type            wedge/' constant/polyMesh/boundary
 sed -i ':a;N;$!ba;s/left\n    {\n        type            patch/left\n    {\n        type            symmetryPlane/' constant/polyMesh/boundary
 sed -i 's/value           uniform 1/value           uniform 0/' 0/alpha.water
-runApplication ./../initbulletJet/initbubble
+runApplication ./../initFreeSurface/initbubble
 sed -i 's/value           uniform 0/value           uniform 1/' 0/alpha.water
 #runApplication setFields
 runApplication decomposePar
