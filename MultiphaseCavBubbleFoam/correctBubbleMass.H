@@ -16,7 +16,7 @@
             }
             if (bubblePhase == 0)
             {
-                if (bubbleV < bubbleV0)
+                if (bubbleV < bubbleV0 && runTime.value() > 1e-6)
                 {
                     bubblePhase = 1;
                     for (phaseModel& PHASE : mixture.phases())
