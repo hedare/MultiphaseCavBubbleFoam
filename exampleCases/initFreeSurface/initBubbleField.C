@@ -196,7 +196,7 @@ int main(int argc, char *argv[])
 
     dimensionedScalar BubbleRadius("BubbleRadius", dimLength, transportProperties);
 
-    dimensionedScalar epsionBubble("epsionBubble", dimless, transportProperties);
+    dimensionedScalar epsilonBubble("epsilonBubble", dimless, transportProperties);
 
     dimensionedScalar pliquid("pliquid", dimPressure, transportProperties);
 
@@ -211,7 +211,7 @@ int main(int argc, char *argv[])
 
         scalar kb = magSqr((x[0]-BubbleCenter.value()[0])/BubbleRadius.value())+magSqr((x[1]-BubbleCenter.value()[1])/BubbleRadius.value())+magSqr((x[2]-BubbleCenter.value()[2])/BubbleRadius.value());
 
-        alpha_air[cellI] = (1-Foam::tanh((kb-1)/epsionBubble.value()))/2;
+        alpha_air[cellI] = (1-Foam::tanh((kb-1)/epsilonBubble.value()))/2;
     	
         if (x[1]>=sheetThickness.value())
         {

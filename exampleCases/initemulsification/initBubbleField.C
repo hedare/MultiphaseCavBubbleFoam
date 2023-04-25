@@ -198,7 +198,7 @@ int main(int argc, char *argv[])
 
     dimensionedScalar dropRadius("dropRadius", dimLength, transportProperties);
 
-    dimensionedScalar epsionBubble("epsionBubble", dimless, transportProperties);
+    dimensionedScalar epsilonBubble("epsilonBubble", dimless, transportProperties);
 
     dimensionedScalar pliquid("pliquid", dimPressure, transportProperties);
 
@@ -213,11 +213,11 @@ int main(int argc, char *argv[])
 
         scalar kb = magSqr((x[0]-BubbleCenter.value()[0])/BubbleRadius.value())+magSqr((x[1]-BubbleCenter.value()[1])/BubbleRadius.value())+magSqr((x[2]-BubbleCenter.value()[2])/BubbleRadius.value());
 
-        alpha_air[cellI] = (1-Foam::tanh((kb-1)/epsionBubble.value()))/2;
+        alpha_air[cellI] = (1-Foam::tanh((kb-1)/epsilonBubble.value()))/2;
     	
         scalar kb2 = magSqr((x[0]-dropCenter.value()[0])/dropRadius.value())+magSqr((x[1]-dropCenter.value()[1])/dropRadius.value())+magSqr((x[2]-dropCenter.value()[2])/dropRadius.value());
 
-        alpha_water[cellI] = (1-Foam::tanh((kb2-1)/epsionBubble.value()))/2;
+        alpha_water[cellI] = (1-Foam::tanh((kb2-1)/epsilonBubble.value()))/2;
 
         inkMap[cellI] = x - BubbleCenter.value();
     }
