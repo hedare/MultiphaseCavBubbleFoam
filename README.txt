@@ -15,6 +15,6 @@ which has to have been sourced after OpenFOAM installation.
 5. If executed in parallel computation, reconstruct the simulation data using 'reconstructPar'.
 6. To view the simulation results, open the file fluid.foam using ParaView.
 
-The progress of the simulation may be monitored by running 'tail -f log.MultiphaseCavBubbleFoam' in the simulation folder.
+The progress of the simulation may be monitored by running 'tail -f log.MultiphaseCavBubbleFoam' or 'tail -f info.csv' in the simulation folder.
 Simulation settings and parameters may be altered in the text files within the simulation folder (e.g. bubble initial conditions in constant/transportProperties or simulation end time and field output interval in system/controlDict).
 The simulation geometry may be altered by changing the file "system/blockMeshDict".
