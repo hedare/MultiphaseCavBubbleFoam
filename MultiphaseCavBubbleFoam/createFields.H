@@ -76,31 +76,6 @@ dimensionedScalar rhoMax("rhoMax", dimDensity, transportProperties);
 
 dimensionedScalar pFact("pFact", dimless, transportProperties);
 
-/*
-IOdictionary thermophysicalProperties_water
-(
-    IOobject
-    (
-        "thermophysicalProperties.water",
-        runTime.constant(),
-        mesh,
-        IOobject::MUST_READ_IF_MODIFIED,
-        IOobject::NO_WRITE
-    )
-);
-
-IOdictionary thermophysicalProperties_oil
-(
-    IOobject
-    (
-        "thermophysicalProperties.oil",
-        runTime.constant(),
-        mesh,
-        IOobject::MUST_READ_IF_MODIFIED,
-        IOobject::NO_WRITE
-    )
-);
-*/
 IOdictionary thermophysicalProperties_air
 (
     IOobject
@@ -112,17 +87,6 @@ IOdictionary thermophysicalProperties_air
         IOobject::NO_WRITE
     )
 );
-/*
-dimensionedScalar B_water	("B", 		dimPressure, 	thermophysicalProperties_water.subDict("mixture").subDict("equationOfState"));
-dimensionedScalar rho0_water	("rho0", 	dimDensity, 	thermophysicalProperties_water.subDict("mixture").subDict("equationOfState"));
-dimensionedScalar p0_water	("p0", 	dimPressure, 	thermophysicalProperties_water.subDict("mixture").subDict("equationOfState"));
-dimensionedScalar gamma_water	("gamma", 	dimless, 	thermophysicalProperties_water.subDict("mixture").subDict("equationOfState"));
-
-dimensionedScalar B_oil	("B", 		dimPressure, 	thermophysicalProperties_oil.subDict("mixture").subDict("equationOfState"));
-dimensionedScalar rho0_oil	("rho0", 	dimDensity, 	thermophysicalProperties_oil.subDict("mixture").subDict("equationOfState"));
-dimensionedScalar p0_oil	("p0", 	dimPressure, 	thermophysicalProperties_oil.subDict("mixture").subDict("equationOfState"));
-dimensionedScalar gamma_oil	("gamma", 	dimless, 	thermophysicalProperties_oil.subDict("mixture").subDict("equationOfState"));
-*/
 dimensionedScalar B_air	("B", 		dimPressure, 	thermophysicalProperties_air.subDict("mixture").subDict("equationOfState"));
 dimensionedScalar rho0_air	("rho0", 	dimDensity, 	thermophysicalProperties_air.subDict("mixture").subDict("equationOfState"));
 dimensionedScalar p0_air	("p0", 	dimPressure, 	thermophysicalProperties_air.subDict("mixture").subDict("equationOfState"));
@@ -152,7 +116,7 @@ volScalarField rho_water
         IOobject::READ_IF_PRESENT,
         IOobject::AUTO_WRITE
     ),
-    mixture.rho() //rho0_water*Foam::pow((p_rgh+B_water)/(p0_water+B_water),1/gamma_water)
+    mixture.rho()
 );
 
 volScalarField rho_oil
@@ -165,7 +129,7 @@ volScalarField rho_oil
         IOobject::READ_IF_PRESENT,
         IOobject::AUTO_WRITE
     ),
-    mixture.rho() //rho0_oil*Foam::pow((p_rgh+B_oil)/(p0_oil+B_oil),1/gamma_oil)
+    mixture.rho()
 );
 
 volScalarField rho_air
@@ -178,10 +142,8 @@ volScalarField rho_air
         IOobject::READ_IF_PRESENT,
         IOobject::AUTO_WRITE
     ),
-    mixture.rho() //rho0_air*Foam::pow((p_rgh+B_air)/(p0_air+B_air),1/gamma_air)
+    mixture.rho()
 );
-
-//rho = mixture.rho();
 
 volVectorField inkMap
 (
