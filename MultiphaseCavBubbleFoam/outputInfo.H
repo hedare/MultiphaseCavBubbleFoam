@@ -22,7 +22,7 @@ forAllConstIters(mixture.phases(), phase)
         }
         infovstime << runTime.timeName()<<","
                    << bubbleV << ","
-                   << Foam::gSum(mesh.V()*alpha2p.field()) << ","
+                   << Foam::gSum(mesh.V()*alpha2p.field())/bubbleV << ","
                    << bubblem << ","
                    << Foam::gSum(mesh.V()*alpha3rho.field()) << ","
                    << Foam::gSum(mesh.V()*alpha1rho.field()) << nl;

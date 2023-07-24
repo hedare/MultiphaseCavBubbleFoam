@@ -33,7 +33,7 @@ forAllConstIters(mixture.phases(), phase)
         infovstime << "%Time,bubbleVolume,bubblepressure,bubblemass,oilmass,watermass" << nl;
         infovstime << runTime.timeName()<<","
                    << bubbleV0 << ","
-                   << Foam::gSum(mesh.V()*alpha2p.field()) << ","
+                   << Foam::gSum(mesh.V()*alpha2p.field())/bubbleV0 << ","
                    << bubblem0 << ","
                    << Foam::gSum(mesh.V()*alpha3rho.field()) << ","
                    << Foam::gSum(mesh.V()*alpha1rho.field()) << nl;
