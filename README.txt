@@ -1,8 +1,7 @@
 This solver is based on the OpenFOAM solver multiphaseCompressibleInterFoam, as modified by Hendrik Reese.
 
 To run a simulation, one must first properly install OpenFOAMv2006:
-https://www.openfoam.com/download/release-history#v2006
-https://develop.openfoam.com/Development/openfoam/blob/master/doc/Build.md
+https://www.cemf.ir/how-to-install-openfoam-v2006-from-source-pack/
 
 In the following instructions it is assumed that OpenFOAM was installed on an Ubuntu operating system.
 To execute OpenFOAM commands, one must first enter the OpenFOAM environment by 
